@@ -1,0 +1,126 @@
+
+
+  /* .table td, .table th {
+    font-size: 18px;
+} */
+input[type="text"]{
+    width: 70%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px !important;
+    padding: 0.25rem !important;
+    border-radius: 0.5rem !important;
+}
+label{
+    font-size: 18px;
+}
+  form td:last-child {
+    display: flex;
+    /* justify-content: space-evenly; */
+  }
+/*   
+  form * {
+    font-size: 14px;
+  } */
+
+
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+  
+      /* Force table to not be like tables anymore */
+      .app-container
+      table, thead, tbody, th, td, tr { 
+          display: block; 
+      }
+      
+      /* Hide table headers (but not display: none;, for accessibility) */
+      thead tr { 
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+      }
+      
+      tr { border: 1px solid #ccc; }
+      
+      td { 
+          /* Behave  like a "row" */
+          border: none;
+          border-bottom: 1px solid #eee; 
+          position: relative;
+          padding-left: 50%; 
+      }
+      
+      td:before { 
+          /* Now like a table header */
+          position: absolute;
+          /* Top/left values mimic padding */
+          top: 6px;
+          left: 6px;
+          width: 45%; 
+          padding-right: 10px; 
+          white-space: nowrap;
+      }
+      
+      td:nth-of-type(1):before { content: ""; }
+      td:nth-of-type(2):before { content: ""; }
+      td:nth-of-type(3):before { content: ""; }
+      td:nth-of-type(4):before { content: ""; }
+      td:nth-of-type(5):before { content: ""; }
+      td:nth-of-type(6):before { content: ""; }
+      td:nth-of-type(7):before { content: ""; }
+      td:nth-of-type(8):before { content: ""; }
+      td:nth-of-type(9):before { content: ""; }
+      td:nth-of-type(10):before { content: ""; }
+  }
+
+
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 70%;
+  }
+  
+  th,
+  td {
+    border: 1px solid #280000;
+    text-align: left;
+    padding: 8px;
+    font-size: 32px;
+  }
+  
+  th {
+    background-color: rgb(117, 201, 250);
+  }
+  
+  td {
+    background-color: rgb(205, 235, 253);
+  }
+  
+  form {
+    display: flex;
+    gap: 5px;
+  }
+
+  
+
+  .input {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  .addTimeable{
+    margin: auto;
+  }
+
+
+  .addTimeable button{
+    background-color: aqua;
+    border-radius: 10px;
+  }

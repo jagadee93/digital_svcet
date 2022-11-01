@@ -1,0 +1,82 @@
+    [
+
+        {
+            "id": 1,
+            "day":"time",
+            "p1": "9:30AM-10:20AM",
+            "p2": "10:20-11:10AM",
+            "p3": "11:30Am-12:20PM",
+            "p4":"12:20Pm-1:10PM",
+            "p5":"2:10PM-3:00PM",
+            "p6":"3:00PM-3:50PM",
+            "p7":"3:50-4:40"
+        },
+
+
+        {
+        "id": 2,
+        "day":"Monday",
+        "p1": "st",
+        "p2": "cc",
+        "p3": "Seminar",
+        "p4":"PE",
+        "p5":"ST/IOT LAB",
+        "p6":"ST/IOT LAB",
+        "p7":"ST/IOT LAB"
+        },
+        {
+        "id": 3,
+        "day":"Tuesday",
+        "p1":"IOT",
+        "p2": "AI",
+        "p3": "PE",
+        "p4":"CC",
+        "p5":"PE",
+        "p6":"ML",
+        "p7":"MINI PROJECT"
+        },
+        {
+        "id": 4,
+        "day":"wednesday",
+        "p1": "AI",
+        "p2": "ST",
+        "p3": "IOT",
+        "p4":"ST",
+        "p5":"CC",
+        "p6":"MINI_PROJECT",
+        "p7":"ML"
+        },
+        {
+        "id": 5,
+        "day":"thursday",
+        "p1": "CC",
+        "p2": "AI",
+        "p3": "PE",
+        "p4":"ST",
+        "p5":"ML",
+        "p6":"ST",
+        "p7":"IOT"
+        },
+        {
+        "id": 6,
+        "day":"firday",
+        "p1": "AI",
+        "p2": "ML",
+        "p3": "IOT",
+        "p4":"CC",
+        "p5":"ST/IOT LAB",
+        "p6":"ST/IOT LAB",
+        "p7":"ST/IOT LAB"
+        },
+        {
+        "id": 7,
+        "day":"saturday",
+        "p1": "PE",
+        "p2": "IOT",
+        "p3": "ML",
+        "p4":"AI",
+        "p5":"DEPTASSOC",
+        "p6":"DEPTASSOC",
+        "p7":"DEPTASSOC"
+        }
+    ]

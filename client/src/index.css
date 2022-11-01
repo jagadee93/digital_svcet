@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  html, body {
+    height: 100%;
+  }
+  body {
+    line-height: 1.5;
+    /* -webkit-font-smoothing: antialiased; */
+    /* background-image: url("./components/Navbar/SvcetLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; */
+
+    
+  }
+.navLink{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap:30px;
+    margin-left: 20px;
+    text-decoration: none;
+    color:aliceblue;
+}
+ svg{
+    color:aliceblue;
+
+}
+.container-fluid{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.navbar-nav .nav-link.active {
+    color: white;
+}
+@media (max-width:767px) {
+    .navbar-nav .open .dropdown-menu {
+      background-color:#fff;
+    }
+  } 
+.navbar-toggler{
+    background-color: rgb(255, 255, 255) !important;
+    display: flex;
+    justify-content: flex-end !important;
+    width: 10%;
+  }{
+
+  }
+  .navbar>.container-fluid{
+    justify-content: flex-end !important;
+    margin-left: 20px;
+  }
+  
+element.style{
+  width: 102.195px;
+  transform: translate(453.334px, 0px);
+  color: rgb(255, 255, 255);
+}
+
+a #collasible-nav-dropdown.dropdown-toggle.nav.link{
+  line-height:24px;
+  padding:8px;
+}
+.nav-link{
+  padding-top: 18px !important;
+  color:white !important;
+}
+
+
+.section{
+  margin: auto;
+  display:flex;
+  background-color: aqua;
+  flex-direction:column;
+  font-weight:700;
+  justify-content:flex-start;
+  line-height:24px;
+  padding:16px;
+  width: 25%;
+}
+
+form .regLogin{
+  width: auto;
+
+
+}
+input[type="text"],
+input[type="password"],
+button{
+  width:100%;
+}
+.Log{
+  width: 100% !important;
+  height: 45px;
+}
+button.Log {
+  margin: 15px 0;
+  height: 45px !important;
+  border-radius: 11px;
+
+}
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+  .section{
+    margin: auto;
+    width: 90%;
+  }
+}
