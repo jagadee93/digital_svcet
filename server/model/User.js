@@ -5,7 +5,8 @@ const userSchema = new Schema({
     username: {
         type: String,
         unique:true,
-        required: true
+        required: true,
+        lowercase:true,
     },
     className:{
         type:String,
@@ -36,7 +37,11 @@ const userSchema = new Schema({
         timeTable:{
             type:mongoose.SchemaTypes.ObjectId,
             ref:"tables"
+        },
+        periods:{
+            type:[]
         }
+        
     },
     createdAt:{
         type:String,

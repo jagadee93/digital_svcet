@@ -76,13 +76,14 @@ a #collasible-nav-dropdown.dropdown-toggle.nav.link{
 .section{
   margin: auto;
   display:flex;
-  background-color: aqua;
+  /* background-color: aqua; */
   flex-direction:column;
   font-weight:700;
   justify-content:flex-start;
   line-height:24px;
   padding:16px;
   width: 25%;
+  border: 2px solid black;
 }
 
 form .regLogin{
@@ -111,5 +112,9 @@ only screen and (max-width: 760px),
   .section{
     margin: auto;
     width: 90%;
+  }
+  
+  .cardP{
+    position: relative;
   }
 }

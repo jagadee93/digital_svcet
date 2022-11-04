@@ -110,26 +110,21 @@ const Register = () => {
     }
     console.log(type)
     return (
-      <>
+      <div className="register">
         {success ? (
           naviGate("/login")
         ) : (
-          <section className="register">
-            <Container>
-              <Row className="align-items-center">
-                <Col size={12}>
+          <div className="form-conatainer" >
                   <p
                     ref={errRef}
                     className={errMsg ? "errmsg" : "offscreen"}
                     aria-live="assertive">
                     {errMsg}
                   </p>
-                </Col>
-
                 <h1>Register</h1>
-                <form className="regLogin" onSubmit={handleSubmit}>
-                  <Row>
-                    <Col size={12}>
+                <div className="">
+                <form className="form-conatainer" onSubmit={handleSubmit}>
+                
                     <label htmlFor="email">
                       Email:
                       <span className={validEmail ? "valid" : "hide"}>
@@ -141,13 +136,13 @@ const Register = () => {
                       </span>
                     </label>
                     <input
+                      id="regEMail"
                       type="email"
                       value={email}
                       onChange={(e) => {
                         const value = e.target.value;
                         setEmail(value.toLowerCase());
                       }}
-                      id="email1"
                       ref={emailRef}
                       autoComplete="off"
                       aria-invalid={validEmail ? "false" : "true"}
@@ -165,9 +160,7 @@ const Register = () => {
                       enter a valid email <br />
                       Must include @ .<br />
                     </p>
-                    </Col>
-                    <Col size={12}>
-
+                  
                     <label htmlFor="username">
                       Username:
                       <FontAwesomeIcon
@@ -180,10 +173,11 @@ const Register = () => {
                       />
                     </label>
                     <input
+                      style={{width:"100%"}}
                       type="text"
-                      id="username"
+                      id="regusername"
                       autoComplete="off"
-                      onChange={(e) => setUser(e.target.value)}
+                      onChange={(e) => setUser((e.target.value).toLowerCase())}
                       value={user}
                       required
                       aria-invalid={validName ? "false" : "true"}
@@ -205,8 +199,7 @@ const Register = () => {
                       <br />
                       Letters, numbers, underscores, hyphens allowed.
                     </p>
-                    </Col>
-                  </Row>
+                
                   <label htmlFor="className">
                     ClassName:
                     {/* <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
@@ -214,6 +207,7 @@ const Register = () => {
                   </label>
 
                   <input
+                    style={{width:"100%",backgroundColor:'#0f91bc'}}
                     type="text"
                     id="className"
                     autoComplete="off"
@@ -239,6 +233,7 @@ const Register = () => {
 
                   <label htmlFor="type">Select student / Teacher </label>
                   <select
+                    style={{width:"100%",height:"43px",borderRadius:'8px', backgroundColor:'#0f91bc'}}
                     onChange={(event) => setType(event.target.value)}
                     value={type}
                     required>
@@ -301,6 +296,7 @@ const Register = () => {
                   <input
                     type="password"
                     id="confirm_pwd"
+                    style={{backgroundColor:'#0f91bc'}}
                     onChange={(e) => setMatchPwd(e.target.value)}
                     value={matchPwd}
                     required
@@ -325,6 +321,7 @@ const Register = () => {
                     Sign Up
                   </button>
                 </form>
+               
                 <p>
                   Already registered?
                   <br />
@@ -332,11 +329,12 @@ const Register = () => {
                     <Link to="/">Sign In</Link>
                   </span>
                 </p>
-              </Row>
-            </Container>
-          </section>
+                </div>
+             
+      
+          </div>
         )}
-      </>
+      </div>
     );
 }
 

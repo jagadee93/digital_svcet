@@ -45,12 +45,13 @@ app.use('/auth', require('./routes/auth'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 
-
+app.use("/public",require("./routes/api/PublicTable"))
 app.use(verifyJWT);
 app.use("/timetable",require("./routes/api/Timetable"))
 app.use('/employees', require('./routes/api/employees'));
 app.use('/users', require('./routes/api/users'));
 app.use("/pendingusers",require("./routes/api/pendingusers"))
+
 app.all('*', (req, res) => {
     res.status(404);
     if (req.accepts('html')) {

@@ -35,7 +35,7 @@ function Navbarr() {
           <Link className="navLink" to="/addclass">
             AddClass
           </Link>
-          <NavDropdown  style={{color:""}} title="timetables" id="collasible-nav-dropdown">
+          {/* <NavDropdown  style={{color:""}} title="timetables" id="collasible-nav-dropdown">
        <Link to="#home">Home</Link>
         <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">
@@ -46,13 +46,9 @@ function Navbarr() {
         <NavDropdown.Item href="#action/3.4">
           Separated link
         </NavDropdown.Item>
-      </NavDropdown>
+      </NavDropdown> */}
           {auth.user?<Link className="navLink" onClick={signOut} to="/">Logout</Link>:<Link className="navLink" to="/login">Login</Link>}
-          {auth?.roles?.includes(5150)?
-          <Link className="navLink" to="/pendingteachers">pendingteachers</Link>
-          :auth?.roles?.includes(1984)?<><h4 className="nav-text">Critic</h4></>
-          :auth?.roles?.includes(2001)?<><h4 className="nav-text">viewer</h4></>
-          :<Link className="navLink" to="/register">Register</Link>}
+         
         
 
         {
@@ -60,16 +56,21 @@ function Navbarr() {
             auth?.roles?.includes(5150)?
             <Link className="navLink" to="/pendingtimetables">Pending timetables</Link>:''
         }
-
+        <Link className='navLink' to="/public/teachers">Teachers</Link>
 
           </Nav>
+          {auth?.roles?.includes(5150)?
+          <Link className="navLink" to="/pendingteachers">pendingteachers</Link>
+          :auth?.roles?.includes(1984)?<><span className="nav-text">Teacher</span></>
+          :auth?.roles?.includes(2001)?<><span className="nav-text">Student</span></>
+          :<Link className="navLink" to="/register">Register</Link>}
         <span style={{ }} className={'profile'}>
         {auth?.roles?.includes(5150) ? (
     <Link to={"/users"}>
       {" "}
       users  <FaUserAstronaut size={30}  />
     </Link>
-  ) : auth?.user ? (
+  ) : auth?.roles?.includes(2001)? (
     <Link to={"/profile"}>
       {auth.user + " "} <FaUserAstronaut size={30} />
     </Link>

@@ -43,7 +43,8 @@ const Login = () => {
             const id=response?.data?.id
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAuth({ id,user, pwd, roles, accessToken });
+            const className=response?.data?.class
+            setAuth({ id,user, pwd, roles, accessToken,className});
             setUser('');
             setPwd('');
             navigate(from, { replace: true });
@@ -82,7 +83,7 @@ const Login = () => {
                     id="username"
                     ref={userRef}
                     autoComplete="off"
-                    onChange={(e) => setUser(e.target.value)}
+                    onChange={(e) => setUser((e.target.value).toLowerCase())}
                     value={user}
                     required
                 />

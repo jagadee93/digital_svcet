@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
-function EachTable({id,name,periods,roomNo,classIncharge,onDelete}) {
+function EachTable({id,name,periods,roomNo,classIncharge,onDelete,onApprove}) {
 
 
   const axiosPrivate=useAxiosPrivate();
@@ -13,7 +13,7 @@ function EachTable({id,name,periods,roomNo,classIncharge,onDelete}) {
     <Card bg={"red"}
     key={id}
     id={id}
-    style={{ width: '80%' }}
+    style={{ width: '80%',height:"600px" }}
     className="mb-2">
       <Card.Body>
 
@@ -36,13 +36,14 @@ function EachTable({id,name,periods,roomNo,classIncharge,onDelete}) {
                 <tbody>
                   {
                     periods?.map((eachRow,index)=>{
-                      return <EachRow row={eachRow} />
+                      return <EachRow key={index} row={eachRow} />
                     })
                   }
           </tbody>
 
             </table>
         <Button onClick={() =>onDelete(id)}>delete</Button>
+        <Button onClick={() =>onApprove(id)}>Approve</Button>
       </Card.Body>
     </Card>
   );

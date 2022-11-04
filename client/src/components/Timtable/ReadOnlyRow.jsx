@@ -1,23 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
+import useAuth from "../../hooks/useAuth";
 
-const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
+const ReadOnlyRow = (props) => {
+  const {auth}=useAuth();
+  const [disabled,setDisabled]=useState(true)
   return (
-    <tr id={contact.id}>
-      <td >{contact.day}</td>
-      <td>{contact.p1}</td>
-      <td>{contact.p2}</td>
-      <td>{contact.p3}</td>
-      <td>{contact.p4}</td>
-      <td>{contact.p5}</td>
-      <td>{contact.p6}</td>
-      <td>{contact.p7}</td>
+    <tr id={props.contact.id}>
+      <td >{props.contact.day}</td>
+      <td>{props.contact.p1}</td>
+      <td>{props.contact.p2}</td>
+      <td>{props.contact.p3}</td>
+      <td>{props.contact.p4}</td>
+      <td>{props.contact.p5}</td>
+      <td>{props.contact.p6}</td>
+      <td>{props.contact.p7}</td>
       <td>
         <button  className="btn btn-info"
           type="button"
-          onClick={(event) => handleEditClick(event, contact)}
+          onClick={(event) => props.handleEditClick(event, props.contact)}
         >  Edit
         </button>
-
       </td>
     </tr>
   );

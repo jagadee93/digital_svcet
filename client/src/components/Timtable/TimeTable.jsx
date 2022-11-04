@@ -97,10 +97,6 @@ const TimeTable = () => {
     setContacts(newContacts);
   };
 
-
-
-
-
   const [timetable,setTimetable]=useState([])
   useEffect(() => {
     let isMounted = true;
@@ -159,16 +155,18 @@ return (
             </tr>
           </thead>
           <tbody>
-            {contacts.map((contact) => (
+            {contacts.map((contact,index) => (
               <>
                 {editContactId === contact.id ? (
                   <EditableRow
+                    key={index}
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
                     handleCancelClick={handleCancelClick}
                   />
                 ) :(
                   <ReadOnlyRow
+                    key={index}
                     contact={contact}
                     handleEditClick={handleEditClick}
                   />

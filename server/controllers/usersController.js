@@ -25,12 +25,16 @@ const getUser = async (req, res) => {
     res.json(user);
 }
 
-
-
-
+const getTeachers=async(req,res)=>{
+    const users=await User.find({"roles.Teacher":1984}).select('username className teacher email createdAt')
+    console.log(users)
+    if(!users) return res.status(400).json({"message":"no found users"})
+    res.json(users)
+}
 
 module.exports = {
     getAllUsers,
     deleteUser,
-    getUser
+    getUser,
+    getTeachers
 }

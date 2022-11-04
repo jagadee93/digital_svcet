@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const handleLogin = async (req, res) => {
     const { user, pwd } = req.body;
     console.log(user,pwd)
-    console.log("hekllo")
     
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     const foundUser = await User.findOne({ username: user }).exec();
@@ -41,7 +40,7 @@ const handleLogin = async (req, res) => {
         res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
 
         // Send authorization roles and access token to user
-        res.json({id:foundUser._id, roles, accessToken });
+        res.json({id:foundUser._id, roles, accessToken,class:foundUser?.className });
 
     } else {
         res.sendStatus(401);

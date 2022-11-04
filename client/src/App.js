@@ -15,8 +15,11 @@ import Navbarr from './components/Navbar/Nabarr';
 import AddClass from "./components/class/AddClass"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./index.css"
+import Teachers from './components/TeachersList/Teachers';
 import PendingTeachers from './components/Admin/PendingTeachers';
 import PendingTables from './components/class/pendingTables';
+import { UserTimetable } from './components/Timtable/TimeTables';
+import Profile from './components/profile/Profile';
 const ROLES = {
   'Student': 2001,
   'Teacher': 1984,
@@ -30,18 +33,18 @@ function App() {
     <Navbarr/>
     <Routes>
       <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Home />} />
         {/* public routes */}
         <Route path="/timetable" element={<TimeTable />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="linkpage" element={<LinkPage />} />
+        <Route path="/public/tables/:id" element={<UserTimetable />} />
+        <Route path="public/teachers" element={<Teachers />} />
         <Route path="unauthorized" element={<Unauthorized />} />
-       
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
-          <Route element={<RequireAuth allowedRoles={[ROLES.Student]} />}>
-            <Route path="/" element={<Home />} />
-          </Route>
+    
           <Route element={<RequireAuth allowedRoles={[ROLES.Teacher]} />}>
             <Route path="addclass" element={<AddClass />} />
           </Route>
@@ -61,6 +64,9 @@ function App() {
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path="pendingtimetables" element={<PendingTables />} />
+          </Route>
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin,ROLES.Teacher]} />}>
+            <Route path="/profile" element={<Profile />} />
           </Route>
 
         </Route>

@@ -1,10 +1,10 @@
 const classTable = require('../model/tables');
-const getAllTables = async (req, res) => {
-    const employees = await tables.find();
-    if (!employees) return res.status(204).json({ 'message': 'No tables found.' });
-    res.json(employees);
-}
 
+const getAllTables = async (req, res) => {
+    const tables = await classTable.find().where({ApprovedStatus:true}).exec();
+    if (!tables) return res.status(204).json({'message':'No tables found.' });
+    res.json(tables);
+}
 const createNewTable = async (req, res) => {
     console.log(req.body)
     if (!req?.body?.className || !req?.body?.classTeacher) return res.status(400).json({"message":"insufficient data"})
@@ -38,8 +38,6 @@ const updateTable = async (req, res) => {
         return res.status(204).json({ "message": `No employee matches ID ${req.body.id}.` });
     }
     if(!table.table) return res.status(400).json({"message":"table does not exists"})
-    if (req.body?.firstname) employee.firstname = req.body.firstname;
-    if (req.body?.lastname) employee.lastname = req.body.lastname;
     const result = await employee.save();
     res.json(result);
 }
@@ -58,14 +56,31 @@ const deleteTable = async (req, res) => {
     return res.json(result);
 }
 
-const getOneTable = async (req, res) => {
-    if (!req?.params?.id) return res.status(400).json({ 'message': 'Table ID required.' });
 
-    const Table = await classTable.findOne({ className: req.params.id }).exec();
-    if (!Table) {
+
+const approveTable=async(req,res) =>{
+    console.log(req?.params?.id);
+    if (!req?.params?.id) return res.status(400).json({ 'message': 'table ID required.' });
+    const Foundtable=await classTable.findOne({_id:req.params.id}).exec();
+    console.log(Foundtable)
+    if(!Foundtable) return res.status(400)
+    Foundtable.ApprovedStatus=true,
+    result=await Foundtable.save()
+    console.log(result)
+    return res.status(200).json({"message":"table approved"});
+}
+
+const getOneTable = async (req, res) => {
+    console.log(req.params.id)
+    if (!req?.params?.id) return res.status(400).json({ 'message': 'Table ID required.' });
+    console.log(req.params.id)
+    const Table = await classTable.findOne({ className: req.params.id}).exec();
+    console.log(Table)
+    if (Table===null) {
         return res.status(204).json({ "message": `No table found for  ${req.params.id}.` });
     }
-    res.json(Table);
+    console.log(Table)
+    return res.json(Table);
 }
 
 
@@ -75,4 +90,12 @@ const getAllPendingTimetables=async(req,res) =>{
     res.json(tables)
 }
 
-module.exports = {getAllTables,getOneTable,updateTable,deleteTable,createNewTable,getAllPendingTimetables}
+module.exports = {
+    getAllTables,
+    getOneTable,
+    updateTable,
+    deleteTable,
+    createNewTable,
+    getAllPendingTimetables,
+    approveTable
+}

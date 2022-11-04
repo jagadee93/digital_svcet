@@ -11,6 +11,7 @@ const PendingTables = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [deleteStatus, setDeleteStatus] = useState(false)
+  const [approveStatus, setApproveStatus] = useState(false)
   const [errMsg, setErrmsg] = useState('')
   //if(!auth.user) navigate('/login', { state: { from: location }, replace: true });
 
@@ -28,7 +29,23 @@ const PendingTables = () => {
       setErrmsg(err)
     }
   }
+  const approveTable = async (id) => {
+    console.log(id)
+    try {
+      const response = axiosPrivate.put(`timetable/${id}`, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
+      });
+      console.log(response)
+      setApproveStatus(true)
+      setErrmsg("successfully deleted")
+    } catch (err) {
+      console.log(err)
+      setErrmsg(err)
+    }
+  }
   useEffect(() => {
+    console.log("hello")
     let isMounted = true
     const controller = new AbortController();
     const getTimeTables = async () => {
@@ -38,6 +55,7 @@ const PendingTables = () => {
         });
         setTimetables(response.data);
         setDeleteStatus(false)
+        setApproveStatus(false)
         setErrmsg("")
       }
       catch (err) {
@@ -50,7 +68,7 @@ const PendingTables = () => {
       isMounted = false;
       controller.abort();
     }
-  }, [deleteStatus])
+  }, [deleteStatus,approveStatus])
   return (
     <>
       <div style={{ backGroundColor: "red" }} >
@@ -73,6 +91,7 @@ const PendingTables = () => {
                 roomNo={each.roomNo}
                 classIncharge={each.ClassIncharge}
                 onDelete={deleteTable}
+                onApprove={approveTable}
               />
             }) : "no time tables found"
         }
